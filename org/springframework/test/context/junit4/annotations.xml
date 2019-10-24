@@ -1,5 +1,0 @@
-<root>
-    <item name='org.springframework.test.context.junit4.SpringRunner'>
-        <annotation name='java.lang.Deprecated'/>
-    </item>
-</root>
