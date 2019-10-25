@@ -1,6 +1,6 @@
 package com.lei.learn.tdd.FizzBuzz;
 
-public class FizzBuzz1 {
+public class FizzBuzzRound1 {
   public String print(int i) {
 
     if (i % 15 == 0) {
