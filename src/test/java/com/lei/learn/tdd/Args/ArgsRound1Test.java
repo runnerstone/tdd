@@ -9,6 +9,12 @@ public class ArgsRound1Test {
   @Test
   public void should_see_schema() {
     Schemas schemas = new Schemas("l:bool");
-    assertThat(schemas.getSchemaConfig(),is("l:bool"));
+    assertThat(schemas.getSchemaConfig(), is("l:bool"));
+  }
+
+  @Test
+  public void should_get_boolean() {
+    Schemas schemas = new Schemas("l:boolean");
+    assertThat(schemas.getArgsType("l"), is("boolean"));
   }
 }
