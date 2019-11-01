@@ -6,15 +6,20 @@ import static org.junit.Assert.assertThat;
 import org.junit.Test;
 
 public class ArgsRound1Test {
+
   @Test
-  public void should_see_schema() {
-    Schemas schemas = new Schemas("l:bool");
-    assertThat(schemas.getSchemaConfig(), is("l:bool"));
+  public void should_get_schema() {
+    ArgsRound1 argsRound1 = new ArgsRound1(new SchemasRound1("l:boolean,d:string,p:int"),
+        new CommandRound1("-l -d /user/src -p 8080"));
+    assertThat(argsRound1.getSchema().toString(),
+        is(new SchemasRound1("l:boolean,d:string,p:int").toString()));
   }
 
   @Test
-  public void should_get_boolean() {
-    Schemas schemas = new Schemas("l:boolean");
-    assertThat(schemas.getArgsType("l"), is("boolean"));
+  public void should_see_command() {
+    ArgsRound1 argsRound1 = new ArgsRound1(new SchemasRound1("l:boolean,d:string,p:int"),
+        new CommandRound1("-l -d /user/src -p 8080"));
+    assertThat(argsRound1.getCommand().toString(),
+        is(new CommandRound1("-l -d /user/src -p 8080").toString()));
   }
 }
