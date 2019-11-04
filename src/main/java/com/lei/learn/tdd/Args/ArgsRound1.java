@@ -17,4 +17,8 @@ public class ArgsRound1 {
   public SchemasRound1 getSchema() {
     return schema;
   }
+
+  public Object getValue(String type) {
+    return schema.getSchemaValue("name", command.getValue(name));
+  }
 }

@@ -2,6 +2,7 @@ package com.lei.learn.tdd.Args;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.ListIterator;
 
 public class CommandRound1 {
 
@@ -14,15 +15,20 @@ public class CommandRound1 {
   private HashMap<String, String> initCommandMap(String commandLine) {
     HashMap<String, String> result = new HashMap<>();
 
-    String[] commands = commandLine.split("-");
-    Arrays.asList(commands).stream().forEach(str -> {
-      String[] typeValue = str.split("^\\s+");
-      if (typeValue.length == 0 && typeValue[0] != "") {
-        result.put(typeValue[0], "True");
-      } else if (typeValue.length == 1) {
-        result.put(typeValue[0], typeValue[1]);
+    String[] commands = commandLine.split("\\s+");
+    ListIterator<String> iterator = Arrays.asList(commands).listIterator();
+    while (iterator.hasNext()) {
+      String name = iterator.next().substring(1);
+      if (iterator.hasNext()) {
+        String value = iterator.next();
+        if (value.charAt(0) != '-') {
+          result.put(name, value);
+        } else {
+          iterator.previous();
+        }
       }
-    });
+    }
+
     return result;
   }
 

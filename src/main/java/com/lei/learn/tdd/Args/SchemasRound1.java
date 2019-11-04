@@ -10,9 +10,14 @@ public class SchemasRound1 {
     this.schemaMap = initSchemaMap(schemaConfig);
   }
 
-  public String getSchemaValue(String schemaKey) {
+  public Object getSchemaValue(String type, String strValue) {
 
-    return schemaMap.get(schemaKey);
+    switch (type) {
+      case "bool":
+        return "true".equalsIgnoreCase(String.valueOf(Boolean.TRUE));
+      default:
+        return strValue;
+    }
   }
 
   private HashMap<String, String> initSchemaMap(String schemaConfig) {
@@ -24,11 +29,5 @@ public class SchemasRound1 {
     });
 
     return result;
-  }
-
-  @Override
-  public String toString() {
-
-    return schemaMap.toString();
   }
 }
